@@ -1,3 +1,5 @@
+from view.menu import menu_opcoes
+from view.menu import opcoes
 from models.treino import Treino
 from controllers.treino_controller import adicionar_treino, listar_treinos
 
