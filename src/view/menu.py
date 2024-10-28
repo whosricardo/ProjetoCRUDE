@@ -15,6 +15,10 @@ def opcoes ():
         opcao_visualizar()
         
     elif (opcao == 3):
+        opcao_atualizar()
+        
+    elif (opcao == 4):
+        
         
         
         
@@ -60,7 +64,14 @@ def opcao_visualizar ():
     
         
 def opcao_atualizar():
-          
+    from controllers.treino_controller import atualizar_treino
+    nome_treino = str(input("Insira o nome do treino que deseja substituir: "))
+    novos_dados = str(input("Insira o novo dado de treino: "))
+    atualizar_treino (nome_treino , novos_dados)
         
-        
-  
+
+def opcao_deletar ():
+    from controllers.treino_controller import deletar_treino
+    nome_treino = str(input("Insira o nome do treino/competição a ser deletado: "))
+    deletar_treino(nome_treino)
+    
