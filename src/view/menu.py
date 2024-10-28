@@ -18,6 +18,10 @@ def opcoes ():
         opcao_atualizar()
         
     elif (opcao == 4):
+        opcao_deletar()
+        
+    
+
         
         
         
