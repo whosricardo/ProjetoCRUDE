@@ -16,6 +16,8 @@ def atualizar_treino(nome_treino, novos_dados):
         with open('data/treinos.csv', mode='r', newline='') as file:
             reader = csv.reader(file)
             for linha in reader:
+                if len(linha) == 0:
+                    continue 
                 if linha[0] == nome_treino:
                     if isinstance(novos_dados, list) and len(novos_dados) == len(linha):
                         treinos.append(novos_dados)

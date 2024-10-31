@@ -33,28 +33,35 @@ def opcao_visualizar ():
     
         
 def opcao_atualizar():
-    from controllers.treino_controller import atualizar_treino
-    from controllers.treino_controller import listar_treinos
+    from controllers.treino_controller import atualizar_treino, listar_treinos
+    
     listar_treinos()
     
+    nome_treino = input("Insira o nome do treino que deseja substituir: ")
     novos_dados = []
-    nome_treino = str(input("Insira o nome do treino que deseja substituir: "))
     
-    while True:
-        try:
-            nome = str(input("Insira o nome do novo treino: "))
-            data_str = input("Insira a nova data do treino/competição (DD/MM/YYYY): ")
-            data_format = datetime.strptime(data_str, "%d/%m/%Y")
-            data = data_format.strftime("%d/%m/%Y")
-            tempo = float(input("Insira o novo tempo de treino/competição em minutos: "))
-            distancia = float(input("Insira a nova distancia percorrida em quilometros: "))
-            clima = str(input("Insira o novo clima do treino/competição correspondente : "))
-            localizacao = str(input("Insira a nova localização do treino/competição: "))
-            break
-        except ValueError:
-            print("Insira um data type pedido")
-            
-    novos_dados += [nome,data,tempo,distancia,clima,localizacao]
+    campos = [
+        ("nome do novo treino", str),
+        ("data do treino/competição (DD/MM/YYYY)", str, "%d/%m/%Y"),
+        ("tempo de treino/competição em minutos", float),
+        ("distância percorrida em quilômetros", float),
+        ("clima do treino/competição", str),
+        ("localização do treino/competição", str)
+    ]
+    
+    for campo, tipo, *args in campos:
+        while True:
+            try:
+                valor = input(f"Insira o {campo}: ")
+                if tipo == str and args:
+                    valor = datetime.strptime(valor, args[0]).strftime(args[0])
+                else:
+                    valor = tipo(valor)
+                novos_dados.append(valor)
+                break
+            except ValueError:
+                print(f"Erro: valor inválido para {campo}. Tente novamente.")
+
     atualizar_treino(nome_treino, novos_dados)
 
 def opcao_deletar ():
