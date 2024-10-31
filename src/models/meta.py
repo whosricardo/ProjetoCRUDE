@@ -9,6 +9,4 @@ class Metas:
         self.meta_calorias = meta_calorias
 
     def __str__(self):
-        return (f"Nome do Treino: {self.nome}, Data do Treino: {self.data}, Duração do Treino: {self.tempo}, "
-                f"Distância do Treino: {self.distancia}, \n"
-                f"Meta de Tempo: {self.meta_tempo}, Meta de Distância: {self.meta_distancia}, Meta de Calorias: {self.meta_calorias}")
+        return (f"Nome do Treino: {self.nome}, Data do Treino: {self.data}, Duração do Treino: {self.tempo}, Distância do Treino: {self.distancia}, Meta de Tempo: {self.meta_tempo}, Meta de Distância: {self.meta_distancia}, Meta de Calorias: {self.meta_calorias}")
