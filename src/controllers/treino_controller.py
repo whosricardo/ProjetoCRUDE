@@ -13,11 +13,15 @@ def atualizar_treino(nome_treino, novos_dados):
         treinos = []
         treino_encontrado = False
 
-        with open('data/treinos.csv', mode='r') as file:
+        with open('data/treinos.csv', mode='r', newline='') as file:
             reader = csv.reader(file)
             for linha in reader:
                 if linha[0] == nome_treino:
-                    treinos.append(novos_dados)
+                    if isinstance(novos_dados, list) and len(novos_dados) == len(linha):
+                        treinos.append(novos_dados)
+                    else:
+                        print("Erro: Os novos dados devem ser uma lista com o mesmo número de colunas.")
+                        return
                     treino_encontrado = True
                 else:
                     treinos.append(linha)
@@ -26,7 +30,7 @@ def atualizar_treino(nome_treino, novos_dados):
             print(f"Treino [{nome_treino}] não encontrado")
             return
         
-        with open('data/treinos.csv', mode='w') as file:
+        with open('data/treinos.csv', mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(treinos)
             print(f"Treino [{nome_treino}] foi atualizado com sucesso!")
