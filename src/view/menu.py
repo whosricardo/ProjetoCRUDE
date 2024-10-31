@@ -34,10 +34,28 @@ def opcao_visualizar ():
         
 def opcao_atualizar():
     from controllers.treino_controller import atualizar_treino
+    from controllers.treino_controller import listar_treinos
+    listar_treinos()
+    
+    novos_dados = []
     nome_treino = str(input("Insira o nome do treino que deseja substituir: "))
-    novos_dados = str(input("Insira o novo dado de treino: "))
-    atualizar_treino (nome_treino , novos_dados)
-        
+    
+    while True:
+        try:
+            nome = str(input("Insira o nome do novo treino: "))
+            data_str = input("Insira a nova data do treino/competição (DD/MM/YYYY): ")
+            data_format = datetime.strptime(data_str, "%d/%m/%Y")
+            data = data_format.strftime("%d/%m/%Y")
+            tempo = float(input("Insira o novo tempo de treino/competição em minutos: "))
+            distancia = float(input("Insira a nova distancia percorrida em quilometros: "))
+            clima = str(input("Insira o novo clima do treino/competição correspondente : "))
+            localizacao = str(input("Insira a nova localização do treino/competição: "))
+            break
+        except ValueError:
+            print("Insira um data type pedido")
+            
+    novos_dados += [nome,data,tempo,distancia,clima,localizacao]
+    atualizar_treino(nome_treino, novos_dados)
 
 def opcao_deletar ():
     from controllers.treino_controller import deletar_treino
