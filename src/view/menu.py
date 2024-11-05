@@ -18,7 +18,7 @@ def menu_metas ():
     print ("4- Deletar registro de metas.")
     print ("5- voltar ao menu principal.")
     opcao_menu ()
-
+#aaaa
 def opcao_adicionar ():
     from controllers.treino_controller import adicionar_treino
     while True:
