@@ -8,6 +8,7 @@ def menu_opcoes ():
     print ("4- Excluir registro de treino/competição")
     print ("5- Acessar o menu de metas.")
     print ("6- sair")
+    opcoes ()
     
 def menu_metas ():
     print ("Menu de metas\n")
@@ -16,6 +17,19 @@ def menu_metas ():
     print ("3- Atualizar registro de metas.")
     print ("4- Deletar registro de metas.")
     print ("5- voltar ao menu principal.")
+    
+    opcao_menu ()
+    
+     
+    
+  
+    
+
+
+
+
+
+
 
 def opcao_adicionar ():
     from controllers.treino_controller import adicionar_treino
@@ -80,6 +94,7 @@ def opcao_deletar ():
 
     
 def opcoes ():
+    
     opcao = int(input("Digite o código da ação correspondente: "))
 
     if (opcao == 1):
@@ -98,6 +113,7 @@ def opcoes ():
         menu_metas ()
         opcao_menu ()
         
+        
     
         
 
@@ -106,7 +122,7 @@ def metas_adicionar ():
     from controllers.meta_controller import adicionar_meta
     while True:
         try:
-            nome = str(input("Insira o nome do treino nome: "))
+            nome = str(input("Insira o nome do treino: "))
             data_str = input("Insira a data do treino/competição (DD/MM/YYYY): ")
             data_format = datetime.strptime(data_str, "%d/%m/%Y")
             data = data_format.strftime("%d/%m/%Y")
@@ -191,6 +207,6 @@ def opcao_menu():
             
             
         
-    
+
 
  
