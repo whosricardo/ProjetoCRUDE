@@ -70,7 +70,7 @@ def deletar_treino(nome_treino):
         print(f"Ocorreu um erro inesperado: {e}")
 
 def listar_treinos():
-    with open('data/treinos.csv', mode='r') as file
+    with open('data/treinos.csv', mode='r') as file:
         reader = csv.reader(file)
         for linha in reader:
             print(linha)
