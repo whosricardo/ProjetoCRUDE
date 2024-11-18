@@ -1,16 +1,9 @@
-from view.menu import menu_opcoes
-from view.menu import opcoes
-from models.treino import Treino
-from controllers.treino_controller import adicionar_treino, listar_treinos
+from view.menu import opcao_adicionar, opcao_atualizar, opcao_deletar, opcao_visualizar, menu_opcoes, opcoes
 
 def main():
-    nome = "Corrida de 100 Metros"
-    data = "12/10/2024"
-    tempo = 2 
-    distancia = 5
-    clima = "Ensolarado"
-    localizacao = "Boa Vista"
+    while True:
+        menu_opcoes()
+        opcoes()
 
-    adicionar_treino(nome, data, tempo, distancia, clima, localizacao)
 if __name__ == "__main__":
     main()

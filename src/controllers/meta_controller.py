@@ -11,28 +11,34 @@ def adicionar_meta(nome, data, tempo, distancia, meta_tempo, meta_distancia, met
 def atualizar_meta(nome_meta, novos_dados):
     try:
         metas = []
-        metas_encontrado = False
+        meta_encontrado = False
 
-        with open('data/metas.csv', mode='r') as file:
+        with open('data/metas.csv', mode='r', newline='') as file:
             reader = csv.reader(file)
             for linha in reader:
+                if len(linha) == 0:
+                    continue 
                 if linha[0] == nome_meta:
-                    metas.append(novos_dados)
-                    metas_encontrado = True
+                    if isinstance(novos_dados, list) and len(novos_dados) == len(linha):
+                        metas.append(novos_dados)
+                    else:
+                        print("Erro: Os novos dados devem ser uma lista com o mesmo número de colunas.")
+                        return
+                    meta_encontrado = True
                 else:
                     metas.append(linha)
 
-        if not metas_encontrado:
-            print(f"Meta [{nome_meta}] não encontrado")
+        if not meta_encontrado:
+            print(f"Treino [{nome_meta}] não encontrado")
             return
         
-        with open('data/metas.csv', mode='w') as file:
+        with open('data/treinos.csv', mode='w', newline='') as file:
             writer = csv.writer(file)
             writer.writerows(metas)
-            print(f"Meta [{nome_meta}] foi atualizado com sucesso!")
+            print(f"Treino [{nome_meta}] foi atualizado com sucesso!")
 
     except FileNotFoundError:
-        print(f"Erro: Arquivo 'metas.csv' não foi encontrado")
+        print(f"Erro: Arquivo 'treinos.csv' não foi encontrado")
     except Exception as e:
         print(f"Ocorreu um erro inesperado: {e}")
 
