@@ -206,6 +206,14 @@ def treino_especifico():
         for linha in reader:
             treinos.append(linha[0])  
     return treinos
+
+def treino_aleatorio():
+    import random
+    treinos = treino_especifico()  
+    treinos_select = list(treinos)  
+    
+    treino_random = random.choice(treinos_select)
+    print (f" O melhor treino para você hoje é o {treino_random}. Por favor consultar no menu principal")
     
             
         
