@@ -105,6 +105,9 @@ def opcoes ():
     elif (opcao == 6):
         from controllers.filtro_controller import menu_filtragem
         menu_filtragem ()
+    
+    elif (opcao == 7):
+        treino_aleatorio ()
         
     
         
