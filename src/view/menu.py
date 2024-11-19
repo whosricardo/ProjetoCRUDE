@@ -197,7 +197,15 @@ def opcao_menu():
         menu_opcoes()
         opcoes ()
             
-
+def treino_especifico():
+    import csv
+    treinos = []
+    with open("data/treinos.csv", "r") as arquivo:
+        reader = csv.reader(arquivo)
+        next(reader)  
+        for linha in reader:
+            treinos.append(linha[0])  
+    return treinos
     
             
         
