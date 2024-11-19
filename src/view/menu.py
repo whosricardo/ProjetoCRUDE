@@ -7,7 +7,8 @@ def menu_opcoes ():
     print ("3- Atualizar registro de treino/competição")
     print ("4- Excluir registro de treino/competição")
     print ("5- Acessar o menu de metas.")
-    print ("6- sair")
+    print ("6- Filtrar treinos")
+    print ("7- Sugestão de treino do dia: ")
     opcoes ()
     
 def menu_metas ():
@@ -17,18 +18,7 @@ def menu_metas ():
     print ("3- Atualizar registro de metas.")
     print ("4- Deletar registro de metas.")
     print ("5- voltar ao menu principal.")
-    
     opcao_menu ()
-    
-     
-    
-  
-    
-
-
-
-
-
 
 
 def opcao_adicionar ():
@@ -112,7 +102,9 @@ def opcoes ():
     elif (opcao == 5):
         menu_metas ()
         opcao_menu ()
-        
+    elif (opcao == 6):
+        from controllers.filtro_controller import menu_filtragem
+        menu_filtragem ()
         
     
         
@@ -122,7 +114,7 @@ def metas_adicionar ():
     from controllers.meta_controller import adicionar_meta
     while True:
         try:
-            nome = str(input("Insira o nome do treino: "))
+            nome = str(input("Insira o nome do treino nome: "))
             data_str = input("Insira a data do treino/competição (DD/MM/YYYY): ")
             data_format = datetime.strptime(data_str, "%d/%m/%Y")
             data = data_format.strftime("%d/%m/%Y")
@@ -205,8 +197,10 @@ def opcao_menu():
         menu_opcoes()
         opcoes ()
             
+
+    
             
         
-
+    
 
  
