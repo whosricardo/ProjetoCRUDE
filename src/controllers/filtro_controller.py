@@ -1,155 +1,74 @@
 """
- 1. Importar os treinos
- 2. Transformar tempo e quilometragem para float e int
- 3. Criar a função para filtragem de menor e maior tempo
- 4. Criar a função para a filtragem de menor e maior quilometragem
- 5. Exibir para o usuario
+1. definir as funções para retornar o tempo e adistancia
+2. define a função de filtragem
+2.1. abre o csv
+2.2. transmorma tudo(csv) em uma lista separadas por \n
+2.3. quebra cada elemento da lista em listas menores separadas po ,
+2.4. recebe o modo e o reverso e, utilizando o key, chama a função de tempo ou distancia para definir a variavel de filtragem
+(tempo ou distancia) e o modo de filtragem(crescente ou decrescente)
+2.5. exibe os elementos separados por ,
+3. pergunta ao usuario como ele quer a filtragem
+3.1. chama a função
+3.2. limpa a tela e encerra o loop ou continua
 """
+#1. definir as funções para retornar o tempo e adistancia
 
-def filtragem_menor_tempo():
-    import csv
-    import os
-    #1. Importar os treinos
+def filtrar_tempo(lista):
+    return float(lista[2])
+
+def filtrar_distancia(lista):
+    return float(lista[3])
+
+#2. define a função de filtragem
+
+def filtragem(modo, reverso):
+    #2.1. abre o csv
+
     with open(r"data\treinos.csv", "r", encoding="utf8") as file:
-        lista=[]
-        for i in file:
-            i=i.split(",")
-            #2. Transformar tempo para float
-            i=float(i[3])
-            lista.append(i)
-        lista=lista.sort()
-        #3. Criar filtragem de menor tempo
-        for j in file:
-            for j in file:
-                x=j.strip()
-                x=j.split(",")
-                if x[3]== lista[j]:
-                    print(j)
-                    #5. Exibir para o usuario
+        #2.2. transmorma tudo(csv) em uma lista separadas por "\n"
 
-def filtragem_maior_tempo():
-    import csv
-    import os
-    #1. Importar os treinos
-    with open(r"data\treinos.csv", "r", encoding="utf8") as file:
-        lista=[]
-        for i in file:
-            i=i.split(",")
-            i=float(i[3])
-            #2. Transformar tempo para float
-            lista.append(i)
-            #3. Criar filtragem de maior tempo
-        lista=lista.sort(reverse=True)
-        for j in file:
-            for j in file:
-                x=j.strip()
-                x=j.split(",")
-                if x[3]== lista[j]:
-                    print(j)
-                    #5. Exibir para o usuario
+        linhas = file.read().split("\n")[1:]
+        #2.3. quebra cada elemento da lista em listas menores separadas por ",""
 
-def filtragem_menor_quilometragem():
-    import csv
-    import os
-    #1. Importar os treinos
-    with open("data\treinos.csv", "r", encoding="utf8") as file:
-        lista=[]
-        for i in file:
-            i=i.split(",")
-            i=float(i[4])
-            #2. Transformar quilometragem para float
-            lista.append(i)
-        lista=lista.sort()
-        #4. Criar filtragem de menor quilometragem
-        for j in file:
-            for j in file:
-                x=j.strip()
-                x=j.split(",")
-                if x[4]== lista[j]:
-                    print(j)
-                    #5. Exibir para o usuario
+        for i in range(len(linhas)):
+            linhas[i] = linhas[i].split(",")
+        #2.4. recebe o modo e o reverso e, utilizando o key, chama a função de tempo ou distancia para definir a variavel de filtragem
+        #(tempo ou distancia) e o modo de filtragem(crescente ou decrescente)
 
-def filtragem_maior_quilometragem():
-    import csv
-    import os
-    #1. Importar os treinos
-    with open("data\treinos.csv", "r", encoding="utf8") as file:
-        lista=[]
-        for i in file:
-            i=i.split(",")
-            i=float(i[4])
-            #2. Transformar quilometragem para float
-            lista.append(i)
-        lista=lista.sort(reverse=True)
-        #4. Criar filtragem de maior quilometragem
-        for j in file:
-            for j in file:
-                x=j.strip()
-                x=j.split(",")
-                if x[4]== lista[j]:
-                    print(j)
-                    #5. Exibir para o usuario
+        if modo == 1:
+            linhas.sort(key=filtrar_tempo, reverse=reverso)
+        else:
+            linhas.sort(key=filtrar_distancia, reverse=reverso)
+        #2.5. exibe os elementos separados por ,
 
-"""
-1. função para chamar os filtros
-2. iniciando loop
-3. opção de tempo ou distância
-4. opção para ser crescente ou decrescente
-5. chamar a função 
-6. correção de erros
-7. encerrar o loop
-"""
-#1. função para chamar os filtros
+        for linha in linhas:
+            print(", ".join(linha))
+
 def menu_filtragem():
     import csv
     import os
-    #2. iniciando loop
     while True:
-        #3. opção de tempo ou distância
-        opcao=int(input("Gostaria de filtrar por:\n1 - Tempo\n2 - Quilometragem\n"))
-        try:
-            if opcao==1:
-                #4. opção para ser crescente ou decrescente
-                opcao2=int(input("Você gostaria da filtragem ser:\n1 - Decrescente\n2 - Crescente\n"))
-                if opcao2==1:
-                    #5. chamar a função
-                    filtragem_maior_tempo()
-                    #7. encerrar o loop
-                    saida=input("Pressione Enter para sair: ")
-                    break
-                    os.system("cls")
-                elif opcao2==2:
-                    #5. chamar a função
-                    filtragem_menor_tempo()
-                    #7. encerrar o loop
-                    saida=input("Pressione Enter para sair: ")
-                    break
-                    os.system("cls")
-                else:
-                    #6. correção de erros
-                    print("Digite um numero válido.")
-            
-            elif opcao==2:
-                #4. opção para ser crescente ou decrescente
-                opcao2=int(input("Você gostaria da filtragem ser:\n1 - Decrescente\n2 - Crescente\n"))
-                if opcao2==1:
-                    #5. chamar a função
-                    filtragem_maior_quilometragem()
-                    #7. encerrar o loop
-                    saida=input("Pressione Enter para sair: ")
-                    break
-                    os.system("cls")
-                elif opcao2==2:
-                    #5. chamar a função
-                    filtragem_menor_quilometragem()
-                    #7. encerrar o loop
-                    saida=input("Pressione Enter para sair: ")
-                    break
-                    os.system("cls")
-                else:
-                    #6. correção de erros
-                    print("Digite um numero válido.")
+        #3. pergunta ao usuario como ele quer a filtragem
 
-        except ValueError:
-            #6. correção de erros
-            print("Tente utilzar os numeros citados:")
+        modo =int(input("Gostaria de filtrar por:\n1 - Tempo\n2 - Quilometragem\n"))
+
+        reverso =int(input(f"""
+1 - Crescente
+2 - Decrescente
+"""))
+        #3.1. chama a função
+
+        filtragem(modo, True if reverso == 2 else False)
+
+        sair=input("Aperte Enter para Sair ou escreva 'continue' para filtrar novamente: ")
+        #3.2. limpa a tela e encerra o loop ou continua
+
+        if sair=="continue":
+            os.system("cls")
+        else:
+            os.system("cls")
+            break
+
+        
+if __name__ == "__main__":
+    menu_filtragem()
