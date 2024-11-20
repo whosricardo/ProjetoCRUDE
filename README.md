@@ -36,11 +36,11 @@ Este é o Fluxograma para as funcionalidades do Projeto.
 ## **Instalação**
 1. Clone o repositório:
    ```bash
-   git clone https://github.com/usuario/crudeTeste.git
+   git clone https://github.com/whosricardo/ProjetoCRUDE
    ```
 2. Navegue até o diretório do projeto:
    ```bash
-   cd crudeTeste
+   cd ProjetoCRUDE
    ```
 ---
 
