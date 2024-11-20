@@ -24,7 +24,7 @@ Este projeto foi criado para ajudar atletas a gerenciar seus treinos e competiç
 
 Este é o Fluxograma para as funcionalidades do Projeto.
 
-![Fluxograma do Projeto](/assets/fluxograma.png)
+![Fluxograma do Projeto](fluxograma.png)
 
 ---
 
